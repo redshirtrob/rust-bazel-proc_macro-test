@@ -1,0 +1,35 @@
+# The following flags are not finalised
+# and are currently aimed at development
+
+build --copt=-Wformat=2
+test --copt=-Wformat=2
+
+build --copt=-fno-delete-null-pointer-checks
+test --copt=-fno-delete-null-pointer-checks
+
+# This must reflect the lowest common demoninator CPU in both dev and prod
+build --copt=-march=nehalem
+test --copt=-march=nehalem
+
+build --copt=-mfpmath=sse
+test --copt=-mfpmath=sse
+
+build --copt=-pipe
+build --copt=-O2
+
+test --copt=-pipe
+test --copt=-O2
+
+build --copt=-m64
+build --linkopt=-m64
+build --define bits=64
+test --define bits=64
+test --copt=-m64
+test --linkopt=-m64
+
+build:debug --copt=-ggdb3
+build:debug --copt=-Og
+build:debug --strip=never
+test:debug --copt=-ggdb3
+test:debug --copt=-Og
+test:debug --strip=never

@@ -1,0 +1,23 @@
+[package]
+name = "rust_deps"
+version = "0.1.0"
+
+[lib]
+path = "fake_lib.rs"
+
+[dependencies]
+proc-macro2 = "=0.4.9"
+quote = "=0.6.4"
+
+[dependencies.syn]
+version = "=0.15.22"
+features = ["full"]
+
+[raze]
+# The WORKSPACE relative path to the Cargo.toml working directory.
+workspace_path = "//third_party/rust"
+# The target to generate BUILD rules for.
+target = "x86_64-unknown-linux-gnu"
+# Have Bazel pull the dependencies down
+genmode = "Remote"
+
